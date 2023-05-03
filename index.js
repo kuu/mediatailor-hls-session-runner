@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import process from 'node:process';
 import fetch from 'node-fetch';
 import hlx from 'hlx-lib';
