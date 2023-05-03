@@ -4,19 +4,12 @@
   "description": "A CLI for initializing HLS playback sessions for AWS Elemental MediaTailor client-side tracking",
   "main": "index.js",
   "type": "module",
-  "bin": {
-    "emt-session-get-url": "pm2 start index.js -- --dry-run",
-    "emt-session-start": "pm2 start index.js --",
-    "emt-session-stop": "pm2 stop index.js",
-    "emt-session-logs": "pm2 logs",
-    "emt-session-status": "pm2 status",
-    "emt-session-reset": "pm2 flush && pm2 kill"
-  },
   "scripts": {
     "lint": "xo",
     "audit": "npm audit --audit-level high",
     "test": "npm run audit && npm run lint && ava",
     "debug": "node index.js",
+    "get-url": "node index.js --dry-run",
     "start": "pm2 start index.js --",
     "stop": "pm2 stop index.js",
     "logs": "pm2 logs",

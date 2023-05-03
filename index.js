@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 import process from 'node:process';
 import fetch from 'node-fetch';
 import hlx from 'hlx-lib';
@@ -33,6 +31,7 @@ try {
 
   if (args.dryRun) {
     // Display the HLS url
+    console.log('HLS endpoiint URL:');
     console.log(url);
   } else {
     // Start playback of the HLS url

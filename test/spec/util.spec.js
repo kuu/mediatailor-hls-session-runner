@@ -50,7 +50,7 @@ test('utils.filterArgs', t => {
   t.deepEqual(filterArgs(argv), Object.assign({...args}, {sessionInitUrl, dryRun: true, sessionParams: {streamId: 'group-1'}}));
   argv = ['--stream-id', 'group-1', 'http://example.com/session/init', '--dry-run'];
   t.deepEqual(filterArgs(argv), Object.assign({...args}, {sessionInitUrl, dryRun: true, sessionParams: {streamId: 'group-1'}}));
-  argv = ['--dry-run', 'http://example.com/session/init', '--log-mode', '--stream-id', 'group-1'];
+  argv = ['--dry-run', 'http://example.com/session/init', '--debug', '--stream-id', 'group-1'];
   t.deepEqual(filterArgs(argv), Object.assign({...args}, {sessionInitUrl, dryRun: true, sessionParams: {streamId: 'group-1', logMode: 'DEBUG'}}));
   argv = ['--dry-run', '--stream-id', 'group-1', 'http://example.com/session/init', 'bar', '456', 'baz', '789'];
   t.deepEqual(filterArgs(argv), Object.assign({...args}, {sessionInitUrl, dryRun: true, sessionParams: {streamId: 'group-1', adsParams: {bar: '456', baz: '789'}}}));

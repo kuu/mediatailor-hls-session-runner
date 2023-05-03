@@ -48,7 +48,7 @@ export function filterArgs(argv) {
   for (let i = 0; i < argv.length; i++) {
     if (argv[i] === '--dry-run') {
       args.dryRun = true;
-    } else if (argv[i] === '--log-mode') {
+    } else if (argv[i] === '--debug') {
       args.sessionParams.logMode = 'DEBUG';
     } else if (argv[i] === '--stream-id') {
       args.sessionParams.streamId = argv[++i];
