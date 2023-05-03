@@ -1,16 +1,16 @@
 {
   "name": "mediatailor-hls-session-runner",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A CLI for initializing HLS playback sessions for AWS Elemental MediaTailor client-side tracking",
   "main": "index.js",
   "type": "module",
   "bin": {
-    "emp-session-get-url": "pm2 start index.js -- --dry-run",
-    "emp-session-start": "pm2 start index.js --",
-    "emp-session-stop": "pm2 stop index.js",
-    "emp-session-logs": "pm2 logs",
-    "emp-session-status": "pm2 status",
-    "emp-session-reset": "pm2 flush && pm2 kill"
+    "emt-session-get-url": "pm2 start index.js -- --dry-run",
+    "emt-session-start": "pm2 start index.js --",
+    "emt-session-stop": "pm2 stop index.js",
+    "emt-session-logs": "pm2 logs",
+    "emt-session-status": "pm2 status",
+    "emt-session-reset": "pm2 flush && pm2 kill"
   },
   "scripts": {
     "lint": "xo",
