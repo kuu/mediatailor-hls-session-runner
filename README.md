@@ -23,13 +23,13 @@ $ npm run session {{MediaTailor Session Initialozation URL}}
 
 ### Run HLS session (with the debug mode)
 ```
-$ npm run session {{MediaTailor Session Initialozation URL}} --debug
+$ npm run session {{MediaTailor Session Initialozation URL}} -- --debug
 ```
 
 ### Run HLS session (with stream ID)
 Stream ID is used for prefetch
 ```
-$ npm run session {{MediaTailor Session Initialozation URL}} --stream-id group-A
+$ npm run session {{MediaTailor Session Initialozation URL}} -- --stream-id group-A
 ```
 
 ### Run HLS session (with dynamic variables)
