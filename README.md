@@ -13,29 +13,34 @@ $ npm install
 ### Get HLS endpoint URL
 Make sure that the url includes both prefix and suffix
 ```
-$ npm run get-url {{MediaTailor Session Initialozation URL}}
+$ npm run session -- --dry-run {{MediaTailor Session Initialozation URL}}
 ```
 
 ### Run HLS session
 ```
-$ npm start {{MediaTailor Session Initialozation URL}}
+$ npm run session {{MediaTailor Session Initialozation URL}}
 ```
 
 ### Run HLS session (with the debug mode)
 ```
-$ npm start {{MediaTailor Session Initialozation URL}} --debug
+$ npm run session {{MediaTailor Session Initialozation URL}} --debug
 ```
 
 ### Run HLS session (with stream ID)
 Stream ID is used for prefetch
 ```
-$ npm start {{MediaTailor Session Initialozation URL}} --stream-id group-A
+$ npm run session {{MediaTailor Session Initialozation URL}} --stream-id group-A
 ```
 
 ### Run HLS session (with dynamic variables)
 Dynamic variables need to be appended to the end (cannot come before other options)
 ```
-$ npm start {{MediaTailor Session Initialozation URL}} param1 value1 param2 value2
+$ npm run session {{MediaTailor Session Initialozation URL}} param1 value1 param2 value2
+```
+
+### Run HLS session as an external process
+```
+$ npm start {{MediaTailor Session Initialozation URL}}
 ```
 
 ### Check the process's status
@@ -48,7 +53,7 @@ $ npm run status
 $ npm run logs
 ```
 
-### Stop the session
+### Stop the process
 ```
 $ npm stop
 ```

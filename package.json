@@ -1,6 +1,6 @@
 {
   "name": "mediatailor-hls-session-runner",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "description": "A CLI for initializing HLS playback sessions for AWS Elemental MediaTailor client-side tracking",
   "main": "index.js",
   "type": "module",
@@ -8,8 +8,7 @@
     "lint": "xo",
     "audit": "npm audit --audit-level high",
     "test": "npm run audit && npm run lint && ava",
-    "debug": "node index.js",
-    "get-url": "node index.js --dry-run",
+    "session": "node index.js",
     "start": "pm2 start index.js --",
     "stop": "pm2 stop index.js",
     "logs": "pm2 logs",
