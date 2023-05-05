@@ -17,6 +17,7 @@ $ npm run session -- --dry-run {{MediaTailor Session Initialozation URL}}
 ```
 
 ### Run HLS session
+Keeps downloading the child manifest until being stopped by `[Ctrl]-[C]`
 ```
 $ npm run session {{MediaTailor Session Initialozation URL}}
 ```
