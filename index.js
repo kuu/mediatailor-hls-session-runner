@@ -1,53 +1,33 @@
 import process from 'node:process';
-import fetch from 'node-fetch';
-import hlx from 'hlx-lib';
-import {SessionRunner} from './runner.js';
-import {formatDate, createUrlObject, filterArgs} from './util.js';
+import {readFile} from 'node:fs/promises';
+import {createUrlObject, filterArgs} from './util.js';
+import {runSession} from './session.js';
 
 const args = filterArgs(process.argv.slice(2));
-
 const urlObj = createUrlObject(args.sessionInitUrl);
-
 if (!urlObj) {
   throw new Error(`Invalid session initialization URL: ${args.sessionInitUrl}`);
 }
 
-const body = JSON.stringify(args.sessionParams, null, 0);
-
-console.log(`--- ${formatDate(new Date())} ---`);
-console.log(`Session URL: ${args.sessionInitUrl}`);
-console.log('Session params:');
-console.log(`${body}`);
-
-try {
-  // Initialize a session
-  const res = await fetch(args.sessionInitUrl, {
-    method: 'POST',
-    headers: {'Content-Type': 'application/json'},
-    body,
-  });
-  const {manifestUrl} = await res.json();
-  const url = `${urlObj.origin}${manifestUrl}`;
-
-  if (args.dryRun) {
-    // Display the HLS url
-    console.log('HLS endpoiint URL:');
-    console.log(url);
-  } else {
-    // Start playback of the HLS url
-    const urlObj = createUrlObject(url);
-    console.log(`SessionID: ${urlObj.searchParams.get('aws.sessionId')}`);
-    playHls(url);
+if (args.useScenario) {
+  let scenario = [];
+  try {
+    scenario = JSON.parse(await readFile('./scenario.json'));
+  } catch {
+    console.error('Test scenario file (scenario.json) is required when --use-scenario is specified.');
   }
-} catch (err) {
-  console.error(err.stack);
+  for (const item of scenario) {
+    await delayedRunSession(urlObj, Object.assign({...args}, item), 100);
+  }
+} else {
+  runSession(urlObj, args);
 }
 
-function playHls(url) {
-  hlx.src(url, {playlistOnly: true, noUriConversion: true})
-    .pipe(new SessionRunner(url))
-    .pipe(hlx.dest())
-    .on('error', err => {
-      throw err;
-    });
+function delayedRunSession(urlObj, args, ms) {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      runSession(urlObj, args);
+      resolve();
+    }, ms);
+  });
 }

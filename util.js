@@ -38,6 +38,7 @@ export function filterArgs(argv) {
   const args = {
     sessionInitUrl: '',
     dryRun: false,
+    useScenario: false,
     sessionParams: {
       streamId: '',
       adsParams: null,
@@ -52,6 +53,8 @@ export function filterArgs(argv) {
       args.sessionParams.logMode = 'DEBUG';
     } else if (argv[i] === '--stream-id') {
       args.sessionParams.streamId = argv[++i];
+    } else if (argv[i] === '--use-scenario') {
+      args.useScenario = true;
     } else if (args.sessionInitUrl) {
       args.sessionParams.adsParams = getParams(argv.slice(i));
       break;

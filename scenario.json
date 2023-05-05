@@ -1,0 +1,8 @@
+[
+  {"streamId": "group-1", "adsParams": {"device_type": "mobile"}},
+  {"streamId": "group-1", "adsParams": {"device_type": "tv"}},
+  {"streamId": "group-2", "adsParams": {"device_type": "mobile"}},
+  {"streamId": "group-2", "adsParams": {"device_type": "tv"}},
+  {"streamId": "group-3", "adsParams": {"device_type": "mobile"}},
+  {"streamId": "group-3", "adsParams": {"device_type": "tv"}}
+]

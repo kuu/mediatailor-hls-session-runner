@@ -39,6 +39,23 @@ Dynamic variables need to be appended to the end (cannot come before other optio
 $ npm run session {{MediaTailor Session Initialozation URL}} param1 value1 param2 value2
 ```
 
+### Run HLS session (describe params in a JSON file)
+`--use-scenario` cannot be used with other options except for `--dry-run`
+```
+$ npm run session {{MediaTailor Session Initialozation URL}} -- --use-scenario
+```
+In this case, the params are stored in `./scenario.json` as an array:
+```
+[
+  {"streamId": "group-1", "adsParams": {"device_type": "mobile"}},
+  {"streamId": "group-1", "adsParams": {"device_type": "tv"}},
+  {"streamId": "group-2", "adsParams": {"device_type": "mobile"}},
+  {"streamId": "group-2", "adsParams": {"device_type": "tv"}},
+  {"streamId": "group-3", "adsParams": {"device_type": "mobile"}},
+  {"streamId": "group-3", "adsParams": {"device_type": "tv"}}
+]
+```
+
 ### Run HLS session as an external process
 ```
 $ npm start {{MediaTailor Session Initialozation URL}}

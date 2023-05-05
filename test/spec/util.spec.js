@@ -28,6 +28,7 @@ test('utils.filterArgs', t => {
   const args = {
     sessionInitUrl: '',
     dryRun: false,
+    useScenario: false,
     sessionParams: {},
   };
 
@@ -36,6 +37,8 @@ test('utils.filterArgs', t => {
   t.deepEqual(filterArgs(argv), Object.assign({...args}, {sessionInitUrl}));
   argv = ['--dry-run', 'http://example.com/session/init'];
   t.deepEqual(filterArgs(argv), Object.assign({...args}, {sessionInitUrl, dryRun: true}));
+  argv = ['--use-scenario', 'http://example.com/session/init'];
+  t.deepEqual(filterArgs(argv), Object.assign({...args}, {sessionInitUrl, useScenario: true}));
   argv = ['--stream-id', 'group-1', 'http://example.com/session/init'];
   t.deepEqual(filterArgs(argv), Object.assign({...args}, {sessionInitUrl, sessionParams: {streamId: 'group-1'}}));
   argv = ['--dry-run', '--stream-id', 'group-1', 'http://example.com/session/init'];
