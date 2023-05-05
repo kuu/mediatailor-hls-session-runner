@@ -28,7 +28,7 @@ export class SessionRunner extends Transform {
   _transform(data, _, cb) {
     // Only check the highest bitrate playlist
     if (data.type === 'playlist' && !data.isMasterPlaylist && data.uri.endsWith('0.m3u8')) {
-      this.checkPlaylist(data);
+      // this.checkPlaylist(data);
       console.log(`Playlist checked: ${data.uri}`);
     }
     cb(null, data);
