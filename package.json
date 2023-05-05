@@ -1,6 +1,6 @@
 {
   "name": "mediatailor-hls-session-runner",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A CLI for initializing HLS playback sessions for AWS Elemental MediaTailor client-side tracking",
   "main": "index.js",
   "type": "module",
