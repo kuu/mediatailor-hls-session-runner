@@ -14,7 +14,8 @@ $ npm install
 ```
 $ npm run session -- --dry-run {{MediaTailor Session Initialozation URL}}
 ```
-* `{MediaTailor Session Initialozation URL}` should be a prefix + manifest path e.g.: https://xxx.mediatailor.ap-northeast-1.amazonaws.com/v1/session/xxx/config-name/path/to/manifest.m3u8
+* `{MediaTailor Session Initialozation URL}` should be a prefix + manifest path e.g.: `https://xxx.mediatailor.ap-northeast-1.amazonaws.com/v1/session/xxx/config-name/path/to/manifest.m3u8`
+* It returns an HLS endpoint URL that can be used for playing back with Safari, etc.
 
 ### Run HLS session
 ```
