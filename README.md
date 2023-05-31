@@ -42,14 +42,15 @@ $ npm run session {{MediaTailor Session Initialozation URL}} param1 value1 param
 ```
 * [Dynamic variables](https://docs.aws.amazon.com/mediatailor/latest/ug/variables.html) cannot come before other options.
 
-### Run HLS session (time-shifted viewing)
+### Get HLS endpoint URL for time-shifted viewing
 This will add start/end query parameters to the session initialization URL with the following values:
 * start: Time (seconds) specified with `--shift` parameter before the current time
 * end: Current time
 ```
 $ npm run session {{MediaTailor Session Initialozation URL}} -- --shift 300
 ```
-* If this option is specified, `--dry-run` parameter will be added internally.
+* The above command appends query strings `start={5 minutes before}&end={current time}`
+* `--dry-run` parameter will be added internally when `--shift` is specified.
 
 ### Run HLS session (with params described in a JSON file)
 ```
