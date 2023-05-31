@@ -1,9 +1,15 @@
 import fetch from 'node-fetch';
 import hlx from 'hlx-lib';
 import {SessionRunner} from './runner.js';
-import {formatDate, createUrlObject} from './util.js';
+import {formatDate, createUrlObject, appendQueryStrings} from './util.js';
 
-export async function runSession(urlObj, {dryRun, sessionInitUrl, sessionParams}) {
+export async function runSession(urlObj, {dryRun, sessionInitUrl, sessionParams, shift}) {
+  if (shift > 0) {
+    const end = Math.floor(Date.now() / 1000);
+    const start = end - shift;
+    sessionInitUrl = appendQueryStrings(sessionInitUrl, {start, end});
+  }
+
   const body = JSON.stringify(sessionParams, null, 0);
 
   console.log(`--- ${formatDate(new Date())} ---`);

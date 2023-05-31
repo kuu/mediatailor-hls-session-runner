@@ -39,6 +39,7 @@ export function filterArgs(argv) {
     sessionInitUrl: '',
     dryRun: false,
     useScenario: false,
+    shift: 0,
     sessionParams: {
       streamId: '',
       adsParams: null,
@@ -55,6 +56,12 @@ export function filterArgs(argv) {
       args.sessionParams.streamId = argv[++i];
     } else if (argv[i] === '--use-scenario') {
       args.useScenario = true;
+    } else if (argv[i] === '--shift') {
+      const shift = Number.parseInt(argv[++i], 10);
+      if (!Number.isNaN(shift) && shift > 0) {
+        args.shift = shift;
+        args.dryRun = true;
+      }
     } else if (args.sessionInitUrl) {
       args.sessionParams.adsParams = getParams(argv.slice(i));
       break;
@@ -72,4 +79,15 @@ export function filterArgs(argv) {
     delete args.sessionParams.logMode;
   }
   return args;
+}
+
+export function appendQueryStrings(url, queryObj = {}) {
+  const urlObj = createUrlObject(url);
+  if (!urlObj) {
+    return url;
+  }
+  for (const key of Object.keys(queryObj)) {
+    urlObj.searchParams.set(key, queryObj[key]);
+  }
+  return urlObj.href;
 }
